@@ -1,0 +1,21 @@
+/* src/components/VenueCard.module.css */
+
+/* Desktop */
+.card {
+  border: 1px solid black;
+  display: block;
+}
+
+.img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+}

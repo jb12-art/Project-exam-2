@@ -1,26 +1,24 @@
-/* src/components/Header.module.css */
+/* src/components/Footer.module.css */
 
 /* Desktop */
-.header {
-  background-color: blue;
-  color: aliceblue;
+.footer {
   padding: 20px;
+  background-color: blueviolet;
+  display: flex;
 }
 
 /* Tablet */
 @media (max-width: 768px) {
-  .header {
+  .footer {
     padding: 15px;
   }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
-  .header {
+  .footer {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+    gap: 10px;
     text-align: center;
   }
 }

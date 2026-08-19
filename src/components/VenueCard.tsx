@@ -18,8 +18,31 @@ export default function VenueCard({ venue }: Props) {
         className={styles.img}
       />
 
-      {/* title */}
+      {/* name/title */}
       <h3>{venue.name}</h3>
+
+      {/* price */}
+      <h3>€{venue.price}</h3>
+
+      {/* max Guests */}
+      <h3>Max Guests: {venue.maxGuests}</h3>
+
+      {/* rating */}
+      <h3>&#9734;{venue.rating}</h3>
+
+      {/* meta */}
+      <div className={styles.venueMeta}>
+        {venue.meta.wifi && <span>Wifi</span>}
+        {venue.meta.parking && <span>Parking</span>}
+        {venue.meta.breakfast && <span>Breakfast</span>}
+        {venue.meta.pets && <span>Pets</span>}
+      </div>
+
+      {/* location */}
+      <div className={styles.venueLocation}>
+        {venue.location.country}
+        {venue.location.city}
+      </div>
     </Link>
   );
 }

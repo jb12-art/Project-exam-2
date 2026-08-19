@@ -1,6 +1,6 @@
 # Holidaze
 
-Hotel web application built with TypeScript, React, Vite.
+Hotel web application built with TypeScript, React, Vite, CSS Modules.
 
 ## Installing TypeScript + React + Vite
 

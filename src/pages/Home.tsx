@@ -52,6 +52,7 @@ export default function Home() {
     <Layout>
       <h1 className={styles.header}>Find your destination at Holidaze</h1>
 
+      {/* search bar/ move it to it's own file later */}
       <input
         type="text"
         placeholder="Search venues"

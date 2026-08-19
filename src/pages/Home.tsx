@@ -6,6 +6,7 @@ import styles from './Home.module.css';
 import { fetchVenues } from '../api/venues';
 import type { Venue } from '../types/venues';
 import VenueCard from '../components/VenueCard';
+import Searchbar from '../components/Searchbar';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
@@ -52,13 +53,8 @@ export default function Home() {
     <Layout>
       <h1 className={styles.header}>Find your destination at Holidaze</h1>
 
-      {/* search bar/ move it to it's own file later */}
-      <input
-        type="text"
-        placeholder="Search venues"
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-      />
+      {/* search bar */}
+      <Searchbar onSearch={setSearch} />
 
       <div className={styles.grid}>
         {filteredVenues.map((venue) => (

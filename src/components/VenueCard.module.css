@@ -12,6 +12,17 @@
   object-fit: cover;
 }
 
+.venueMeta {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 2px;
+}
+
+.venueLocation {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 /* Tablet */
 @media (max-width: 768px) {
 }

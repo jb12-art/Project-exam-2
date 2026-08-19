@@ -10,7 +10,7 @@ import type { Venue } from '../types/venues';
  */
 
 export async function fetchVenues(): Promise<Venue[]> {
-  const response = await fetch('https://v2.api.noroff.dev/holidaze');
+  const response = await fetch('https://v2.api.noroff.dev/holidaze/venues');
 
   if (!response.ok) {
     throw new Error('Failed to fetch venues');

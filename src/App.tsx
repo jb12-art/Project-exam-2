@@ -7,7 +7,7 @@ import VenueDetails from './pages/VenueDetails';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/Project-exam-2">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/venue/:id" element={<VenueDetails />} />

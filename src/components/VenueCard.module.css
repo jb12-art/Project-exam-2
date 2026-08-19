@@ -4,6 +4,7 @@
 .card {
   border: 1px solid black;
   display: block;
+  background-color: aliceblue;
 }
 
 .img {

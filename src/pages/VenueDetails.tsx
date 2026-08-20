@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import type { Venue } from '../types/venues';
 import Layout from '../components/Layout';
 import styles from './VenueDetails.module.css';
+import BackToHome from '../components/BackToHome';
 
 export default function VenueDetails() {
   const { id } = useParams(); // get URL id
@@ -14,7 +15,7 @@ export default function VenueDetails() {
   useEffect(() => {
     document.title = 'Venue Details'; // browser tab text
     fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`)
-      .then((Response) => Response.json())
+      .then((response) => response.json())
       .then((data) => {
         setVenue(data.data);
         setLoading(false);
@@ -27,6 +28,8 @@ export default function VenueDetails() {
   return (
     <Layout>
       {/* <BackToHome /> */}
+      <BackToHome />
+
       <h1>Venue details</h1>
 
       {/* page layout */}
@@ -42,24 +45,32 @@ export default function VenueDetails() {
 
         {/* content */}
         <div className={styles.content}>
+          {/* location */}
+          <div className={styles.venueLocation}>
+            <p>
+              {venue.location.city}, {venue.location.country}
+            </p>
+            <p>{venue.location.address}</p>
+            {venue.location.continent}
+          </div>
+
           {/* name/title */}
-          <h3 className={styles.title}>{venue.name}</h3>
+          <h4 className={styles.title}>{venue.name}</h4>
+
           {/* description */}
           <p className={styles.description}>{venue.description}</p>
+
           {/* price */}
-          <h3>€{venue.price}</h3>
+          <div className={styles.price}>
+            <span>€{venue.price}</span>
+            <span className={styles.pricePerNight}>/night</span>
+          </div>
 
           {/* max Guests */}
-          <h3>Max Guests: {venue.maxGuests}</h3>
+          <p>Max Guests: {venue.maxGuests}</p>
 
           {/* rating */}
-          <h3>{venue.rating}</h3>
-
-          {/* created */}
-          <h3>Created: {venue.created}</h3>
-
-          {/* updated */}
-          <h3>Updated: {venue.updated}</h3>
+          <p>&#9733;{venue.rating}</p>
 
           {/* meta */}
           <div className={styles.venueMeta}>
@@ -69,16 +80,11 @@ export default function VenueDetails() {
             {venue.meta.pets && <span>Pets</span>}
           </div>
 
-          {/* location */}
-          <div className={styles.venueLocation}>
-            {venue.location.address}
-            {venue.location.city}
-            {venue.location.zip}
-            {venue.location.country}
-            {venue.location.continent}
-            {venue.location.lat}
-            {venue.location.lng}
-          </div>
+          {/* created */}
+          <p>Created: {new Date(venue.created).toLocaleDateString()}</p>
+
+          {/* updated */}
+          <p>Updated: {new Date(venue.updated).toLocaleDateString()}</p>
         </div>
       </div>
     </Layout>

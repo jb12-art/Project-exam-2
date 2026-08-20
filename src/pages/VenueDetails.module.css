@@ -1,1 +1,21 @@
 /* src/pages/venueDetails.module.tsx */
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pricePerNight {
+  color: rgb(73, 73, 73);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.venueMeta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

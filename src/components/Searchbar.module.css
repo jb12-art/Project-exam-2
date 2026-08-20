@@ -7,6 +7,9 @@
 
 .icon {
   position: absolute;
+  bottom: 0.5%;
+  padding: 10px;
+  font-size: 25px;
 }
 
 .searchbar {

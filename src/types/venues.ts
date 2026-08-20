@@ -4,30 +4,39 @@ export interface Venue {
   id: string;
   name: string;
   description: string;
+
   media: VenueMedia[];
-  price: 0;
-  maxGuests: 0;
-  rating: 0;
+
+  price: number;
+  maxGuests: number;
+  rating: number;
+
   created: string;
   updated: string;
-  meta: {
-    wifi: true;
-    parking: true;
-    breakfast: true;
-    pets: true;
-  };
-  location: {
-    address: string;
-    city: string;
-    zip: string;
-    country: string;
-    continent: string;
-    lat: 0;
-    lng: 0;
-  };
+
+  meta: VenueMeta;
+
+  location: VenueLocation;
 }
 
 export interface VenueMedia {
   url: string;
   alt: string;
+}
+
+export interface VenueMeta {
+  wifi: boolean;
+  parking: boolean;
+  breakfast: boolean;
+  pets: boolean;
+}
+
+export interface VenueLocation {
+  address: string;
+  city: string;
+  zip: string;
+  country: string;
+  continent: string;
+  lat: number;
+  lng: number;
 }

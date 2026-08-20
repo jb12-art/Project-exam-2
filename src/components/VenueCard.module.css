@@ -2,26 +2,27 @@
 
 /* Desktop */
 .card {
-  border: 1px solid black;
+  border-radius: 8px;
   display: block;
   background-color: aliceblue;
+  text-decoration: none;
 }
 
 .img {
+  border-radius: 8px 8px 0px 0px;
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.venueLocation {
+  color: gray;
 }
 
 .venueMeta {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 2px;
-}
-
-.venueLocation {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 /* Tablet */

@@ -51,10 +51,12 @@ export default function Home() {
 
   return (
     <Layout>
-      <h1 className={styles.header}>Find your destination at Holidaze</h1>
+      <h1 className={styles.header}>Find your destination</h1>
 
       {/* search bar */}
       <Searchbar onSearch={setSearch} />
+
+      <h2>Venues</h2>
 
       <div className={styles.grid}>
         {filteredVenues.map((venue) => (

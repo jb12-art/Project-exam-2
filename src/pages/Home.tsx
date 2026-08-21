@@ -7,6 +7,7 @@ import { fetchVenues } from '../api/venues';
 import type { Venue } from '../types/venues';
 import VenueCard from '../components/VenueCard';
 import Searchbar from '../components/Searchbar';
+import LoginBtn from '../components/LoginBtn';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
@@ -51,6 +52,10 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* login */}
+      <LoginBtn />
+
+      {/* header */}
       <h1 className={styles.header}>Find your destination</h1>
 
       {/* search bar */}

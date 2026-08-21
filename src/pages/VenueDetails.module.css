@@ -1,5 +1,19 @@
 /* src/pages/venueDetails.module.tsx */
 
+.content {
+  padding: 1rem;
+  background-color: aliceblue;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.img {
+  border-radius: 8px 8px 0px 0px;
+}
+
+.title {
+  font-weight: 600;
+}
+
 .price {
   display: flex;
   align-items: baseline;

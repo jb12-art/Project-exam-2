@@ -51,11 +51,10 @@ export default function VenueDetails() {
               {venue.location.city}, {venue.location.country}
             </p>
             <p>{venue.location.address}</p>
-            {venue.location.continent}
           </div>
 
           {/* name/title */}
-          <h4 className={styles.title}>{venue.name}</h4>
+          <p className={styles.title}>{venue.name}</p>
 
           {/* description */}
           <p className={styles.description}>{venue.description}</p>

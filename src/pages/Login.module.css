@@ -3,3 +3,21 @@
 .header {
   text-align: center;
 }
+
+.container {
+  margin: 4px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.emailError,
+.passwordError {
+  text-wrap: wrap;
+}
+
+.loginBtn {
+  padding: 8px;
+}

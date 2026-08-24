@@ -8,7 +8,7 @@ export default function LogoutBtn() {
   function handleLogout() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('userName');
-    localStorage.removeItem('vanueManager');
+    localStorage.removeItem('venueManager');
 
     navigate('/');
   }

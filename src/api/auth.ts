@@ -15,7 +15,7 @@ export interface LoginData {
 }
 
 export async function registerUser(data: RegisterData) {
-  const response = await fetch(`${API_URL}/auth/resgister`, {
+  const response = await fetch(`${API_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

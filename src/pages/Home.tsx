@@ -9,13 +9,16 @@ import VenueCard from '../components/VenueCard';
 import Searchbar from '../components/Searchbar';
 import LoginBtn from '../components/LoginBtn';
 import RegisterBtn from '../components/RegisterBtn';
+import LogoutBtn from '../components/LogoutBtn';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const [search, setSearch] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem('accessToken'),
+  );
 
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(search.toLowerCase()),
@@ -53,11 +56,16 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* login */}
-      <LoginBtn />
+      {/* login/register */}
+      {!isLoggedIn && (
+        <>
+          <LoginBtn />
+          <RegisterBtn />
+        </>
+      )}
 
-      {/* register */}
-      <RegisterBtn />
+      {/* logout */}
+      {isLoggedIn && <LogoutBtn onLogout={() => setIsLoggedIn(false)} />}
 
       {/* header */}
       <h1 className={styles.header}>Find your destination</h1>

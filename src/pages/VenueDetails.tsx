@@ -6,14 +6,19 @@ import type { Venue } from '../types/venues';
 import Layout from '../components/Layout';
 import styles from './VenueDetails.module.css';
 import BackToHome from '../components/BackToHome';
+import type { Booking } from '../types/bookings';
+import { fetchBookings } from '../api/bookings';
+import BookingCalendar from '../components/BookingCalendar';
 
 export default function VenueDetails() {
   const { id } = useParams(); // get URL id
   const [venue, setVenue] = useState<Venue | null>(null);
   const [loading, setLoading] = useState(true);
+  const [bookings, setBookings] = useState<Booking[]>([]);
 
   useEffect(() => {
     document.title = 'Venue Details'; // browser tab text
+
     fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -21,6 +26,16 @@ export default function VenueDetails() {
         setLoading(false);
       });
   }, [id]);
+
+  useEffect(() => {
+    fetchBookings()
+      .then((data) => {
+        setBookings(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   if (loading) return <Layout>Loading...</Layout>;
   if (!venue) return <Layout>Venues not found</Layout>;
@@ -78,6 +93,8 @@ export default function VenueDetails() {
             {venue.meta.breakfast && <span>Breakfast</span>}
             {venue.meta.pets && <span>Pets</span>}
           </div>
+
+          <BookingCalendar bookings={bookings} />
 
           {/* created */}
           <p>Created: {new Date(venue.created).toLocaleDateString()}</p>

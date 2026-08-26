@@ -49,3 +49,23 @@ export async function loginUser(data: LoginData) {
 
   return json.data;
 }
+
+export async function createApiKey(accessToken: string) {
+  const response = await fetch(
+    'https://v2.api.noroff.dev/auth/create-api-key',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.errors?.[0]?.message || 'Failed to create API key');
+  }
+
+  return json.data;
+}

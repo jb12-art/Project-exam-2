@@ -6,4 +6,45 @@
 
 .container {
   margin: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.fieldset {
+  margin-bottom: 10px;
+  border-color: black;
+}
+
+.labelCustomer {
+  margin-right: 40px;
+}
+
+.inputName,
+.inputEmail,
+.inputPassword {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.registerBtn {
+  padding: 8px;
+  margin-top: 15px;
+  max-width: 200px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.linkToLogin {
+  color: blue;
+  margin-left: 4px;
 }

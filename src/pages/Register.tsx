@@ -52,53 +52,18 @@ export default function Register() {
 
   return (
     <Layout>
+      {/* Back to home btn */}
       <BackToHome />
 
       <h1 className={styles.header}>Register</h1>
 
       <div className={styles.container}>
-        <form onSubmit={handleSubmit}>
-          {/* name */}
-          <label htmlFor="name">Username</label>
-
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            required
-          />
-
-          {/* email */}
-          <label htmlFor="email">Email</label>
-
-          <input
-            id="email"
-            type="email"
-            placeholder="example@stud.noroff.no"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            pattern=".+@stud\.noroff\.no"
-            title="Use your @stud.noroff.no email address"
-            required
-          />
-
-          {/* password */}
-          <label htmlFor="password">Password</label>
-
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            minLength={8}
-            required
-          />
-
-          <fieldset>
+        <form className={styles.registerForm} onSubmit={handleSubmit}>
+          {/* account type */}
+          <fieldset className={styles.fieldset}>
             <legend>Account type</legend>
 
-            <label>
+            <label className={styles.labelCustomer}>
               <input
                 type="radio"
                 name="accountType"
@@ -119,18 +84,69 @@ export default function Register() {
             </label>
           </fieldset>
 
+          {/* name */}
+          <label htmlFor="name">Username</label>
+
+          <input
+            className={styles.inputName}
+            name="name"
+            id="name"
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+            placeholder="username"
+          />
+
+          {/* email */}
+          <label htmlFor="email">Email</label>
+
+          <input
+            className={styles.inputEmail}
+            name="email"
+            id="email"
+            type="email"
+            placeholder="example@stud.noroff.no"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            pattern=".+@stud\.noroff\.no"
+            title="Use your @stud.noroff.no email address"
+            required
+          />
+
+          {/* password */}
+          <label htmlFor="passwordRegister">Password</label>
+
+          <input
+            className={styles.inputPassword}
+            name="password"
+            id="password"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            minLength={8}
+            required
+            placeholder="password"
+          />
+
           {/* register button */}
-          <button type="submit">Register</button>
+          <button className={styles.registerBtn} type="submit">
+            Register
+          </button>
 
           {error && <p>{error}</p>}
 
           {success && <p>{success}</p>}
+
+          {/* link */}
+          <p>
+            Already have an account?{' '}
+            <Link className={styles.linkToLogin} to="/login">
+              Login
+            </Link>
+          </p>
         </form>
       </div>
-
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
     </Layout>
   );
 }

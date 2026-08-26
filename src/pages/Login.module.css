@@ -6,18 +6,38 @@
 
 .container {
   margin: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
+  margin-bottom: 5px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.emailError,
-.passwordError {
-  text-wrap: wrap;
+.inputEmail {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.inputPassword {
+  margin-bottom: 25px;
+  padding: 5px;
 }
 
 .loginBtn {
   padding: 8px;
+  max-width: 200px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.linkToRegister {
+  color: blue;
+  margin-left: 4px;
 }

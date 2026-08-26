@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import BackToHome from '../components/BackToHome';
 import Layout from '../components/Layout';
-import { loginUser } from '../api/auth';
+import { createApiKey, loginUser } from '../api/auth';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -33,6 +33,10 @@ export default function Login() {
       localStorage.setItem('userName', user.name);
       localStorage.setItem('venueManager', String(user.venueManager));
 
+      const apiKey = await createApiKey(user.accessToken);
+
+      localStorage.setItem('apiKey', apiKey.key);
+
       navigate('/');
     } catch (error) {
       if (error instanceof Error) {
@@ -56,6 +60,7 @@ export default function Login() {
           <label htmlFor="emailLogin">Email</label>
 
           <input
+            className={styles.inputEmail}
             type="email"
             name="email"
             id="emailLogin"
@@ -70,6 +75,7 @@ export default function Login() {
           <label htmlFor="passwordLogin">Password</label>
 
           <input
+            className={styles.inputPassword}
             type="password"
             name="password"
             id="passwordLogin"
@@ -86,12 +92,15 @@ export default function Login() {
           <button className={styles.loginBtn} type="submit">
             Login
           </button>
-        </form>
 
-        <p>
-          Don't have an account?{''}
-          <Link to="/register">Register</Link>
-        </p>
+          {/* link */}
+          <p>
+            Don't have an account?{''}
+            <Link className={styles.linkToRegister} to="/register">
+              Register
+            </Link>
+          </p>
+        </form>
       </div>
     </Layout>
   );

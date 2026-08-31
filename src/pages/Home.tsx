@@ -10,6 +10,7 @@ import Searchbar from '../components/Searchbar';
 import LoginBtn from '../components/LoginBtn';
 import RegisterBtn from '../components/RegisterBtn';
 import LogoutBtn from '../components/LogoutBtn';
+import UserInfo from '../components/UserInfo';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
@@ -56,6 +57,9 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* user information */}
+      <UserInfo />
+
       {/* login/register */}
       {!isLoggedIn && (
         <>

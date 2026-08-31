@@ -14,6 +14,13 @@ export interface LoginData {
   password: string;
 }
 
+export interface User {
+  name: string;
+  email: string;
+  accessToken: string;
+  venueManager: boolean;
+}
+
 export async function registerUser(data: RegisterData) {
   const response = await fetch(`${API_URL}/auth/register`, {
     method: 'POST',
@@ -32,8 +39,8 @@ export async function registerUser(data: RegisterData) {
   return json.data;
 }
 
-export async function loginUser(data: LoginData) {
-  const response = await fetch(`${API_URL}/auth/login`, {
+export async function loginUser(data: LoginData): Promise<User> {
+  const response = await fetch(`${API_URL}/auth/login?_holidaze=true`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,15 +1,39 @@
 <!-- index.html -->
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image" href="#" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Holidaze</title>
-    <script type="module" crossorigin src="/Project-exam-2/assets/index-DItfXTIt.js"></script>
+
+    <script>
+      if (window.location.search[1] === '/') {
+        const decoded = window.location.search
+          .slice(1)
+          .split('&')
+          .map(function (part) {
+            return part.replace(/~and~/g, '&');
+          })
+          .join('?');
+
+        window.history.replaceState(
+          null,
+          null,
+          window.location.pathname.slice(0, -1) +
+            decoded +
+            window.location.hash,
+        );
+      }
+    </script>
+    <script type="module" crossorigin src="/Project-exam-2/assets/index-C5_jjqjB.js"></script>
     <link rel="stylesheet" crossorigin href="/Project-exam-2/assets/index-LqYleeEw.css">
   </head>
   <body>
     <div id="root"></div>
+
   </body>
 </html>

@@ -9,7 +9,7 @@ import Register from './pages/Register';
 function App() {
   return (
     <>
-      <BrowserRouter basename="/Project-exam-2/">
+      <BrowserRouter basename="/Project-exam-2">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/venue/:id" element={<VenueDetails />} />

@@ -7,4 +7,7 @@ export interface Booking {
   guests: number;
   created: string;
   updated: string;
+  venue?: {
+    id: string;
+  };
 }

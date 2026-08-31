@@ -1,1 +1,98 @@
 /* src/components/BookingCalendar.module.css */
+
+.calendar {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.calendarHeader h3 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.calendarHeader button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.weekday {
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+
+.emptyDay {
+  min-height: 45px;
+}
+
+.availableDay,
+.bookedDay,
+.selectedDay {
+  min-height: 45px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.availableDay {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.availableDay:hover {
+  background-color: #7ecde6;
+}
+
+.pastDay {
+  min-height: 45px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #eeeeee;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.bookedDay {
+  background-color: #d3d3d3;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.selectedDay {
+  background-color: #4aa3df;
+  color: white;
+  cursor: pointer;
+}
+
+.selectedDates {
+  margin-top: 20px;
+}
+
+.selectedDates p {
+  margin: 5px 0;
+}
+
+.calendar input {
+  display: block;
+  width: 100%;
+  max-width: fit-content;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}

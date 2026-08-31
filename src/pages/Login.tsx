@@ -31,7 +31,10 @@ export default function Login() {
 
       localStorage.setItem('accessToken', user.accessToken);
       localStorage.setItem('userName', user.name);
-      localStorage.setItem('venueManager', String(user.venueManager));
+      localStorage.setItem(
+        'venueManager',
+        user.venueManager === true ? 'true' : 'false',
+      );
 
       const apiKey = await createApiKey(user.accessToken);
 

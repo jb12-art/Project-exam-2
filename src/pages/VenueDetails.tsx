@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import styles from './VenueDetails.module.css';
 import BackToHome from '../components/BackToHome';
 import type { Booking } from '../types/bookings';
-import { fetchBookings } from '../api/bookings';
+import { fetchVenueBookings } from '../api/venues';
 import BookingCalendar from '../components/BookingCalendar';
 
 export default function VenueDetails() {
@@ -16,6 +16,7 @@ export default function VenueDetails() {
   const [loading, setLoading] = useState(true);
   const [bookings, setBookings] = useState<Booking[]>([]);
 
+  // get the venue
   useEffect(() => {
     document.title = 'Venue Details'; // browser tab text
 
@@ -27,15 +28,30 @@ export default function VenueDetails() {
       });
   }, [id]);
 
+  // get bookings for this venue
   useEffect(() => {
-    fetchBookings()
+    if (!id) return;
+
+    fetchVenueBookings(id)
       .then((data) => {
         setBookings(data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [id]);
+
+  // get the latest bookings after a new booking
+  async function refreshBookings() {
+    if (!id) return;
+
+    try {
+      const data = await fetchVenueBookings(id);
+      setBookings(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   if (loading) return <Layout>Loading...</Layout>;
   if (!venue) return <Layout>Venues not found</Layout>;
@@ -94,7 +110,12 @@ export default function VenueDetails() {
             {venue.meta.pets && <span>Pets</span>}
           </div>
 
-          <BookingCalendar bookings={bookings} />
+          {/* booking calendar */}
+          <BookingCalendar
+            venueId={venue.id}
+            bookings={bookings}
+            onBookingCreated={refreshBookings}
+          />
 
           {/* created */}
           <p>Created: {new Date(venue.created).toLocaleDateString()}</p>

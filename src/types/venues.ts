@@ -1,5 +1,7 @@
 // src/types/venues.ts
 
+import type { Booking } from './bookings';
+
 export interface Venue {
   id: string;
   name: string;
@@ -17,6 +19,7 @@ export interface Venue {
   meta: VenueMeta;
 
   location: VenueLocation;
+  bookings?: Booking[];
 }
 
 export interface VenueMedia {

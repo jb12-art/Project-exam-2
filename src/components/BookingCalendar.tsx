@@ -25,6 +25,7 @@ export default function BookingCalendar({
   // current month shown on the calendar
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
+  const isLoggedIn = !!localStorage.getItem('accessToken');
   const isVenueManager = localStorage.getItem('venueManager') === 'true';
 
   if (isVenueManager) {
@@ -161,6 +162,10 @@ export default function BookingCalendar({
   async function handleBooking() {
     setMessage('');
 
+    if (!isLoggedIn) {
+      setMessage('Please log in before booking.');
+    }
+
     if (!dateFrom || !dateTo) {
       setMessage('Please choose a start and end date.');
       return;
@@ -211,6 +216,9 @@ export default function BookingCalendar({
   return (
     <div className={styles.calendar}>
       <h2>Book this venue</h2>
+
+      {/* if not logged in */}
+      {!isLoggedIn && <p>Please log in to select dates and book this venue.</p>}
 
       {/* calendar header */}
       <div className={styles.calendarHeader}>
@@ -275,7 +283,7 @@ export default function BookingCalendar({
               key={date}
               type="button"
               className={dayClass}
-              disabled={booked || past}
+              disabled={!isLoggedIn || booked || past}
               onClick={() => handleDateClick(date)}
             >
               {day.getDate()}
@@ -308,13 +316,14 @@ export default function BookingCalendar({
         min={1}
         value={guests}
         onChange={(event) => setGuests(Number(event.target.value))}
+        disabled={!isLoggedIn}
       />
 
       {/* book venue button */}
       <button
         type="button"
         onClick={handleBooking}
-        disabled={!dateFrom || !dateTo}
+        disabled={!isLoggedIn || !dateFrom || !dateTo}
       >
         Book venue
       </button>

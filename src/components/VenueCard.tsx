@@ -20,7 +20,7 @@ export default function VenueCard({ venue }: Props) {
 
       {/* location */}
       <div className={styles.venueLocation}>
-        {venue.location.country}, {venue.location.city}
+        {venue.location.city}, {venue.location.country}
       </div>
 
       {/* name/title */}

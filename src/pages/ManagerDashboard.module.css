@@ -1,0 +1,80 @@
+/* src/pages/ManagerDashboard.module.css */
+
+.header {
+  text-align: center;
+}
+
+.sectionProfile,
+.sectionManagerVenues {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 30px;
+  background-color: aliceblue;
+  padding: 20px;
+}
+
+.inputUrl,
+.inputAlt {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.updateAvatarBtn,
+.editManagerVenueBtn,
+.deleteManagerVenueBtn {
+  padding: 8px;
+  margin-top: 10px;
+  max-width: 200px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* create venue */
+/* <section> connects to file: VenueForm.tsx */
+.sectionVenue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+}
+
+.managerVenue {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: antiquewhite;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.venueButtons {
+  display: flex;
+  gap: 10px;
+}

@@ -35,11 +35,8 @@ export interface VenueMeta {
 }
 
 export interface VenueLocation {
-  address: string;
   city: string;
-  zip: string;
   country: string;
-  continent: string;
-  lat: number;
-  lng: number;
+  address: string;
+  zip: string;
 }

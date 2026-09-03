@@ -11,6 +11,7 @@ import LoginBtn from '../components/LoginBtn';
 import RegisterBtn from '../components/RegisterBtn';
 import LogoutBtn from '../components/LogoutBtn';
 import UserInfo from '../components/UserInfo';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
@@ -57,6 +58,11 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* manager page */}
+      {localStorage.getItem('venueManager') === 'true' && (
+        <Link to="/manager">Manager Dashboard</Link>
+      )}
+
       {/* user information */}
       <UserInfo />
 

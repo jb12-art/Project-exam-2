@@ -29,12 +29,7 @@ export default function BookingCalendar({
   const isVenueManager = localStorage.getItem('venueManager') === 'true';
 
   if (isVenueManager) {
-    return (
-      <div>
-        <h2>Bookings</h2>
-        <p>Venue managers cannot book venues.</p>
-      </div>
-    );
+    return null;
   }
 
   // change to previus month

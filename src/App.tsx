@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import VenueDetails from './pages/VenueDetails';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ManagerDashboard from './pages/ManagerDashboard';
 
 function RedirectHandler() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/venue/:id" element={<VenueDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/manager" element={<ManagerDashboard />} />
       </Routes>
     </BrowserRouter>
   );

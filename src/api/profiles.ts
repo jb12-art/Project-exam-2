@@ -2,6 +2,7 @@
 
 import { getAuthHeaders } from './authHeaders';
 import type { Venue } from '../types/venues';
+import type { Booking } from '../types/bookings';
 
 const API_URL = 'https://v2.api.noroff.dev';
 
@@ -45,6 +46,22 @@ export async function fetchMyVenues(name: string): Promise<Venue[]> {
     throw new Error(json.errors?.[0]?.message || 'Failed to fetch my venues');
   }
 
+  return json.data;
+}
+
+export async function fetchMyBookings(name: string): Promise<Booking[]> {
+  const response = await fetch(
+    `${API_URL}/holidaze/profiles/${name}/bookings?_venue=true`,
+    {
+      headers: getAuthHeaders(),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch bookings');
+  }
+
+  const json = await response.json();
   return json.data;
 }
 

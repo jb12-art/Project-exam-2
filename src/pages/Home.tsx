@@ -63,6 +63,9 @@ export default function Home() {
         <Link to="/manager">Manager Dashboard</Link>
       )}
 
+      {/* customer profile page */}
+      {isLoggedIn && <Link to="/profile">My Profile</Link>}
+
       {/* user information */}
       <UserInfo />
 

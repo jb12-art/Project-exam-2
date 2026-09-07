@@ -9,5 +9,6 @@ export interface Booking {
   updated: string;
   venue?: {
     id: string;
+    name: string;
   };
 }

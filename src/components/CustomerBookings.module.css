@@ -1,0 +1,24 @@
+/* src/components/CustomerBookings.module.css */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.divUpcomingBookings {
+  background-color: aliceblue;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.venueImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+}

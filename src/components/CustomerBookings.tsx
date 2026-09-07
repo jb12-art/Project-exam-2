@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { fetchMyBookings } from '../api/profiles';
 import type { Booking } from '../types/bookings';
+import styles from './CustomerBookings.module.css';
 
 export default function CustomerBookings() {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -44,14 +45,22 @@ export default function CustomerBookings() {
   }
 
   return (
-    <section>
+    <section className={styles.section}>
       <h2>My upcoming bookings</h2>
 
       {upcomingBookings.length === 0 ? (
         <p>You have no upcoming bookings.</p>
       ) : (
         upcomingBookings.map((booking) => (
-          <div key={booking.id}>
+          <div className={styles.divUpcomingBookings} key={booking.id}>
+            <img
+              src={booking.venue?.media?.[0]?.url || '/placeholder.jpg'}
+              alt={
+                booking.venue?.media?.[0]?.alt || booking.venue?.name || 'Venue'
+              }
+              className={styles.venueImage}
+            />
+
             <h3>{booking.venue?.name}</h3>
 
             <p>

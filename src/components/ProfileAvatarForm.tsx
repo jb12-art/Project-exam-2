@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { updateAvatar } from '../api/profiles';
 import type { Profile } from '../api/profiles';
+import styles from './ProfileAvatarForm.module.css';
 
 interface Props {
   profile: Profile;
@@ -25,44 +26,44 @@ export default function ProfileAvatarForm({ profile, onAvatarUpdated }: Props) {
       );
 
       onAvatarUpdated(updatedProfile);
-
-      setMessage('Profile picture updated.');
     } catch {
       setMessage('Failed to update profile picture.');
     }
   }
 
   return (
-    <section>
-      <h2>Update profile picture</h2>
+    <section className={styles.section}>
+      <h1>My profile</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Image URL
-          <input
-            type="url"
-            value={avatarUrl}
-            onChange={(event) => setAvatarUrl(event.target.value)}
-            placeholder="https://example.com/image.jpg"
-            required
-          />
-        </label>
-
-        <label>
-          Image Description
-          <input
-            type="text"
-            value={avatarAlt}
-            onChange={(event) => setAvatarAlt(event.target.value)}
-            placeholder="example: My profile picture"
-            required
-          />
-        </label>
-
-        <button type="submit">Update profile picture</button>
-      </form>
+      <p>You can change your profile picture</p>
 
       {message && <p>{message}</p>}
+
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label>Image URL</label>
+        <input
+          className={styles.inputUrl}
+          type="url"
+          value={avatarUrl}
+          onChange={(event) => setAvatarUrl(event.target.value)}
+          placeholder="https://example.com/image.jpg"
+          required
+        />
+
+        <label>Image Description</label>
+        <input
+          className={styles.inputAlt}
+          type="text"
+          value={avatarAlt}
+          onChange={(event) => setAvatarAlt(event.target.value)}
+          placeholder="example: My profile picture"
+          required
+        />
+
+        <button className={styles.profileImgBtn} type="submit">
+          Update profile picture
+        </button>
+      </form>
     </section>
   );
 }

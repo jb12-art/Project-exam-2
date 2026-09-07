@@ -12,9 +12,11 @@ import RegisterBtn from '../components/RegisterBtn';
 import LogoutBtn from '../components/LogoutBtn';
 import UserInfo from '../components/UserInfo';
 import { Link } from 'react-router-dom';
+import { fetchProfile, type Profile as ProfileType } from '../api/profiles';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
+  const [profile, setProfile] = useState<ProfileType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
@@ -39,6 +41,26 @@ export default function Home() {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
+
+    const userName = localStorage.getItem('userName');
+
+    if (!userName) {
+      return;
+    }
+
+    fetchProfile(userName)
+      .then((data) => {
+        setProfile(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [isLoggedIn]);
 
   if (loading) {
     return (
@@ -66,8 +88,21 @@ export default function Home() {
       {/* customer profile page */}
       {isLoggedIn && <Link to="/profile">My Profile</Link>}
 
-      {/* user information */}
-      <UserInfo />
+      {/* logged in customer */}
+      <div className={styles.profileHeader}>
+        {isLoggedIn && profile && (
+          <div>
+            <img
+              src={profile.avatar?.url || '/placeholder.jpg'}
+              alt={profile.avatar?.alt || profile.name}
+              className={styles.avatar}
+            />
+          </div>
+        )}
+
+        {/* user information */}
+        <UserInfo />
+      </div>
 
       {/* login/register */}
       {!isLoggedIn && (

@@ -8,7 +8,7 @@ const API_URL = 'https://v2.api.noroff.dev';
 
 export async function fetchVenues(): Promise<Venue[]> {
   const response = await fetch(
-    `${API_URL}/holidaze/venues?sort=created&sortOrder=desc&limit=100`,
+    `${API_URL}/holidaze/venues?_owner=true&sort=created&sortOrder=desc&limit=100`,
   );
 
   if (!response.ok) {

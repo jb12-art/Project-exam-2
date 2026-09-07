@@ -2,6 +2,20 @@
 
 import type { Booking } from './bookings';
 
+export interface VenueOwner {
+  name: string;
+  email: string;
+  bio?: string;
+  avatar?: {
+    url: string;
+    alt: string;
+  };
+  banner?: {
+    url: string;
+    alt: string;
+  };
+}
+
 export interface Venue {
   id: string;
   name: string;
@@ -19,6 +33,9 @@ export interface Venue {
   meta: VenueMeta;
 
   location: VenueLocation;
+
+  owner?: VenueOwner;
+
   bookings?: Booking[];
 }
 

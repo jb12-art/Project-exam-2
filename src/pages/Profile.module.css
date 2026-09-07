@@ -1,0 +1,23 @@
+/* src/pages/Profile.module.css */
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  margin: 0;
+}
+
+.role {
+  margin: 0.5rem 0 0;
+}

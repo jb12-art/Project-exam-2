@@ -7,6 +7,7 @@ import CustomerBookings from '../components/CustomerBookings';
 import { fetchProfile } from '../api/profiles';
 import type { Profile as ProfileType } from '../api/profiles';
 import styles from './Profile.module.css';
+import BackToHome from '../components/BackToHome';
 
 export default function Profile() {
   const [profile, setProfile] = useState<ProfileType | null>(null);
@@ -67,6 +68,9 @@ export default function Profile() {
 
   return (
     <Layout>
+      {/* Back to home btn */}
+      <BackToHome />
+
       <section>
         <div className={styles.profileHeader}>
           <img
@@ -76,7 +80,7 @@ export default function Profile() {
           />
 
           <div>
-            <h1 className={styles.name}>{profile.name}</h1>
+            <h3 className={styles.name}>{profile.name}</h3>
 
             <p className={styles.role}>
               {profile.venueManager ? 'Venue Manager' : 'Customer'}

@@ -6,8 +6,8 @@ import ProfileAvatarForm from '../components/ProfileAvatarForm';
 import CustomerBookings from '../components/CustomerBookings';
 import { fetchProfile } from '../api/profiles';
 import type { Profile as ProfileType } from '../api/profiles';
-import styles from './Profile.module.css';
 import BackToHome from '../components/BackToHome';
+import UserInfo from '../components/UserInfo';
 
 export default function Profile() {
   const [profile, setProfile] = useState<ProfileType | null>(null);
@@ -72,21 +72,8 @@ export default function Profile() {
       <BackToHome />
 
       <section>
-        <div className={styles.profileHeader}>
-          <img
-            src={profile.avatar?.url || '/placeholder.jpg'}
-            alt={profile.avatar?.alt || profile.name}
-            className={styles.avatar}
-          />
-
-          <div>
-            <h3 className={styles.name}>{profile.name}</h3>
-
-            <p className={styles.role}>
-              {profile.venueManager ? 'Venue Manager' : 'Customer'}
-            </p>
-          </div>
-        </div>
+        {/* logged in user info */}
+        <UserInfo profile={profile} />
 
         <ProfileAvatarForm
           profile={profile}

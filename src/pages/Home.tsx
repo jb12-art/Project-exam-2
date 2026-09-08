@@ -86,23 +86,12 @@ export default function Home() {
       )}
 
       {/* customer profile page */}
-      {isLoggedIn && <Link to="/profile">My Profile</Link>}
+      {isLoggedIn && localStorage.getItem('venueManager') !== 'true' && (
+        <Link to="/profile">My Profile</Link>
+      )}
 
-      {/* logged in customer */}
-      <div className={styles.profileHeader}>
-        {isLoggedIn && profile && (
-          <div>
-            <img
-              src={profile.avatar?.url || '/placeholder.jpg'}
-              alt={profile.avatar?.alt || profile.name}
-              className={styles.avatar}
-            />
-          </div>
-        )}
-
-        {/* user information */}
-        <UserInfo />
-      </div>
+      {/* logged in user info */}
+      {isLoggedIn && profile && <UserInfo profile={profile} />}
 
       {/* login/register */}
       {!isLoggedIn && (

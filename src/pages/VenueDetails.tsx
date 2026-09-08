@@ -9,18 +9,23 @@ import BackToHome from '../components/BackToHome';
 import type { Booking } from '../types/bookings';
 import { fetchVenueBookings } from '../api/venues';
 import BookingCalendar from '../components/BookingCalendar';
+import { fetchProfile } from '../api/profiles';
+import type { Profile as ProfileType } from '../api/profiles';
+import UserInfo from '../components/UserInfo';
 
 export default function VenueDetails() {
   const { id } = useParams(); // get URL id
   const [venue, setVenue] = useState<Venue | null>(null);
   const [loading, setLoading] = useState(true);
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [profile, setProfile] = useState<ProfileType | null>(null);
+  const [isLoggedIn] = useState(!!localStorage.getItem('accessToken'));
 
-  // get the venue
   useEffect(() => {
     document.title = 'Venue Details'; // browser tab text
 
-    fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}`)
+    // get the venue
+    fetch(`https://v2.api.noroff.dev/holidaze/venues/${id}?_owner=true`)
       .then((response) => response.json())
       .then((data) => {
         setVenue(data.data);
@@ -41,6 +46,27 @@ export default function VenueDetails() {
       });
   }, [id]);
 
+  // get customer img, name, role
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
+
+    const userName = localStorage.getItem('userName');
+
+    if (!userName) {
+      return;
+    }
+
+    fetchProfile(userName)
+      .then((data) => {
+        setProfile(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [isLoggedIn]);
+
   // get the latest bookings after a new booking
   async function refreshBookings() {
     if (!id) return;
@@ -60,6 +86,9 @@ export default function VenueDetails() {
     <Layout>
       {/* <BackToHome /> */}
       <BackToHome />
+
+      {/* logged in user info */}
+      {isLoggedIn && profile && <UserInfo profile={profile} />}
 
       <h1>Venue details</h1>
 

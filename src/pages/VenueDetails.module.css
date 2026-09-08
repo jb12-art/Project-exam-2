@@ -1,13 +1,13 @@
 /* src/pages/venueDetails.module.tsx */
 
+.img {
+  border-radius: 8px 8px 0px 0px;
+}
+
 .content {
   padding: 1rem;
   background-color: aliceblue;
   border-radius: 0px 0px 8px 8px;
-}
-
-.img {
-  border-radius: 8px 8px 0px 0px;
 }
 
 .title {

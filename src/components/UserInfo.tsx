@@ -1,22 +1,28 @@
 // src/components/UserInfo.tsx
 
 import styles from './UserInfo.module.css';
+import type { Profile } from '../api/profiles';
 
-export default function UserInfo() {
-  const userName = localStorage.getItem('userName');
-  const venueManager = localStorage.getItem('venueManager') === 'true';
+interface Props {
+  profile: Profile;
+}
 
-  if (!userName) {
-    return null;
-  }
-
+export default function UserInfo({ profile }: Props) {
   return (
-    <div className={styles.UserInfo}>
-      <strong>{userName}</strong>
+    <div className={styles.profileHeader}>
+      <img
+        src={profile.avatar?.url || '/placeholder.jpg'}
+        alt={profile.avatar?.alt || profile.name}
+        className={styles.avatar}
+      />
 
-      <span className={styles.role}>
-        {venueManager ? 'Venue Manager' : 'Customer'}
-      </span>
+      <div>
+        <h3 className={styles.name}>{profile.name}</h3>
+
+        <p className={styles.role}>
+          {profile.venueManager ? 'Venue Manager' : 'Customer'}
+        </p>
+      </div>
     </div>
   );
 }

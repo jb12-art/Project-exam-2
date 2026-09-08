@@ -9,6 +9,8 @@ import { deleteVenue } from '../api/venues';
 import ManagerBookingList from '../components/ManagerBookingList';
 import BackToHome from '../components/BackToHome';
 import styles from './ManagerDashboard.module.css';
+import UserInfo from '../components/UserInfo';
+import type { Profile as ProfileType } from '../api/profiles';
 
 export default function ManagerDashboard() {
   const userName = localStorage.getItem('userName');
@@ -21,12 +23,7 @@ export default function ManagerDashboard() {
 
   const [message, setMessage] = useState('');
 
-  const [profile, setProfile] = useState<{
-    avatar?: {
-      url: string;
-      alt: string;
-    };
-  } | null>(null);
+  const [profile, setProfile] = useState<ProfileType | null>(null);
 
   useEffect(() => {
     document.title = 'Manager Dashboard';
@@ -123,19 +120,13 @@ export default function ManagerDashboard() {
       {/* Back to home btn */}
       <BackToHome />
 
+      {/* logged in user info */}
+      {profile && <UserInfo profile={profile} />}
+
       <h1 className={styles.header}>Venue Manager Dashboard</h1>
 
       {/* profile section */}
       <section className={styles.sectionProfile}>
-        {/* show avatar img */}
-        {profile?.avatar?.url && (
-          <img
-            src={profile.avatar.url}
-            alt={profile.avatar.alt}
-            className={styles.avatar}
-          />
-        )}
-
         <form className={styles.profileForm} onSubmit={handleAvatarSubmit}>
           <h2>My profile</h2>
 

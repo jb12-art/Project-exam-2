@@ -13,14 +13,6 @@
   margin: 4px;
 }
 
-.avatar {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  margin-top: 30px;
-  border-radius: 50%;
-}
-
 .profileForm {
   display: flex;
   flex-direction: column;

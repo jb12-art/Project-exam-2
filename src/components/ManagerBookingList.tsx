@@ -42,26 +42,29 @@ export default function ManagerBookingList({ venueId }: Props) {
 
   return (
     <div className={styles.bookingsContainer}>
-      <h4>Upcoming bookings</h4>
+      <h3>Upcoming bookings</h3>
 
       {upcomingBookings.map((booking) => (
         //  booking calendar for your created venues
         // if no one booked the venue, text say: No upcoming bookings.
         <div className={styles.booking} key={booking.id}>
+          {/* from date */}
           <p>
-            <strong>From:</strong>
+            <strong>From: </strong>
             {''}
             {new Date(booking.dateFrom).toLocaleDateString()}
           </p>
 
+          {/* to date */}
           <p>
-            <strong>To:</strong>
+            <strong>To: </strong>
             {''}
             {new Date(booking.dateTo).toLocaleDateString()}
           </p>
 
+          {/* guests */}
           <p>
-            <strong>Guests:</strong>
+            <strong>Guests: </strong>
             {''}
             {booking.guests}
           </p>

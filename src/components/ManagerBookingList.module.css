@@ -1,13 +1,15 @@
 /* src/components/ManagerBookingList.module.css */
 
+/* upcoming bookings */
+
 .bookingsContainer {
   margin-top: 20px;
   padding: 15px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid black;
 }
 
 .booking {
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid black;
 }

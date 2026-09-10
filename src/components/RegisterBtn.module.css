@@ -1,1 +1,16 @@
 /* src/components/RegisterBtn.module.css */
+
+.registerBtn {
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 8px;
+  color: blue;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.registerBtn:hover {
+  background-color: blue;
+  color: aliceblue;
+}

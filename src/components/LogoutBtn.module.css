@@ -1,1 +1,17 @@
 /* src/components/LogoutBtn.module.css */
+
+.logoutBtn {
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: blue;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  background-color: blue;
+  color: aliceblue;
+}

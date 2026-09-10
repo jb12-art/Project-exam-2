@@ -35,35 +35,38 @@ export default function ProfileAvatarForm({ profile, onAvatarUpdated }: Props) {
     <section className={styles.section}>
       <h1 className={styles.h1}>My profile</h1>
 
-      <p>You can change your profile picture</p>
+      {/* background div */}
+      <div className={styles.backgroundDiv}>
+        {message && <p>{message}</p>}
 
-      {message && <p>{message}</p>}
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <p>You can change your profile picture</p>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label>Image URL</label>
-        <input
-          className={styles.inputUrl}
-          type="url"
-          value={avatarUrl}
-          onChange={(event) => setAvatarUrl(event.target.value)}
-          placeholder="https://example.com/image.jpg"
-          required
-        />
+          <label>Image URL</label>
+          <input
+            className={styles.inputUrl}
+            type="url"
+            value={avatarUrl}
+            onChange={(event) => setAvatarUrl(event.target.value)}
+            placeholder="https://example.com/image.jpg"
+            required
+          />
 
-        <label>Image Description</label>
-        <input
-          className={styles.inputAlt}
-          type="text"
-          value={avatarAlt}
-          onChange={(event) => setAvatarAlt(event.target.value)}
-          placeholder="example: My profile picture"
-          required
-        />
+          <label>Image Description</label>
+          <input
+            className={styles.inputAlt}
+            type="text"
+            value={avatarAlt}
+            onChange={(event) => setAvatarAlt(event.target.value)}
+            placeholder="example: My profile picture"
+            required
+          />
 
-        <button className={styles.profileImgBtn} type="submit">
-          Update profile picture
-        </button>
-      </form>
+          <button className={styles.profileImgBtn} type="submit">
+            Update profile picture
+          </button>
+        </form>
+      </div>
     </section>
   );
 }

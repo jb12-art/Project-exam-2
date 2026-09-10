@@ -2,6 +2,8 @@
 
 .h1 {
   margin-bottom: 50px;
+  color: white;
+  font-size: 3rem;
 }
 
 .section {
@@ -11,15 +13,26 @@
   justify-content: center;
 }
 
-.form {
+.backgroundDiv {
   display: flex;
   flex-direction: column;
   max-width: 700px;
   width: 100%;
-  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: pink;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
   background-color: aliceblue;
   padding: 20px;
   border-radius: 8px;
+}
+
+.form p {
+  margin: 0px 0px 20px 0px;
 }
 
 .inputUrl,

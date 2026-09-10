@@ -82,12 +82,16 @@ export default function Home() {
     <Layout>
       {/* manager page */}
       {localStorage.getItem('venueManager') === 'true' && (
-        <Link to="/manager">Manager Dashboard</Link>
+        <Link className={styles.managerDashboardLink} to="/manager">
+          Manager Dashboard
+        </Link>
       )}
 
       {/* customer profile page */}
       {isLoggedIn && localStorage.getItem('venueManager') !== 'true' && (
-        <Link to="/profile">My Profile</Link>
+        <Link className={styles.myProfileLink} to="/profile">
+          My Profile
+        </Link>
       )}
 
       {/* logged in user info */}

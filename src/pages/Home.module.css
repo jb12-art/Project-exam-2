@@ -1,6 +1,11 @@
 /* src/pages/Home.module.css */
 
 /* Desktop */
+.myProfileLink,
+.managerDashboardLink {
+  color: blue;
+}
+
 .header {
   text-align: center;
 }

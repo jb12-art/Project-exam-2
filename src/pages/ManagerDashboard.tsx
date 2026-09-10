@@ -167,7 +167,7 @@ export default function ManagerDashboard() {
 
       {/* manager venues */}
       <section className={styles.sectionManagerVenues}>
-        <h2>Manager venues</h2>
+        <h2 className={styles.h2ManagerVenues}>Manager venues</h2>
 
         {venues.length === 0 && <p>You have no venues yet.</p>}
 
@@ -186,60 +186,72 @@ export default function ManagerDashboard() {
               />
             </div>
 
-            {/* city/ country */}
-            <p>
-              {venue.location.city}, {venue.location.country}
-            </p>
+            {/* content */}
+            <div className={styles.content}>
+              {/* city/ country */}
+              <div className={styles.venueLocation}>
+                <p className={styles.cityCountry}>
+                  {venue.location.city}, {venue.location.country}
+                </p>
 
-            {/* address/ zip */}
-            <p>
-              {venue.location.address}, {venue.location.zip}
-            </p>
+                {/* address/ zip */}
+                <p className={styles.addressZip}>
+                  {venue.location.address}, {venue.location.zip}
+                </p>
+              </div>
 
-            {/* name */}
-            <h3>{venue.name}</h3>
+              {/* name */}
+              <h3>{venue.name}</h3>
 
-            {/* description */}
-            <p>{venue.description}</p>
+              {/* description */}
+              <p>{venue.description}</p>
 
-            {/* price */}
-            <p>€{venue.price} per night</p>
+              {/* price */}
+              <p>
+                <strong>€{venue.price}</strong>
+                /night
+              </p>
 
-            {/* maxguests */}
-            <p>Max guests {venue.maxGuests}</p>
+              {/* maxguests */}
+              <p>Max guests {venue.maxGuests}</p>
 
-            {/* rating */}
-            <p>{'★'.repeat(venue.rating)}</p>
+              {/* rating */}
+              <p>{'★'.repeat(venue.rating)}</p>
 
-            {/* meta */}
-            <div>
-              {venue.meta.wifi && <span>Wifi</span>}
-              {venue.meta.parking && <span>Parking</span>}
-              {venue.meta.breakfast && <span>Breakfast</span>}
-              {venue.meta.pets && <span>Pets</span>}
-            </div>
+              {/* meta */}
+              <div className={styles.meta}>
+                {venue.meta.wifi && <span>Wifi</span>}
+                {venue.meta.parking && <span>Parking</span>}
+                {venue.meta.breakfast && <span>Breakfast</span>}
+                {venue.meta.pets && <span>Pets</span>}
+              </div>
 
-            {/* created/updated */}
-            <p>Created: {new Date(venue.created).toLocaleDateString()}</p>
+              <div className={styles.venueButtons}>
+                <button
+                  className={styles.editManagerVenueBtn}
+                  type="button"
+                  onClick={() => setSelectedVenue(venue)}
+                >
+                  Edit
+                </button>
 
-            <p>Updated: {new Date(venue.updated).toLocaleDateString()}</p>
+                <button
+                  className={styles.deleteManagerVenueBtn}
+                  type="button"
+                  onClick={() => handleDelete(venue.id)}
+                >
+                  Delete
+                </button>
+              </div>
 
-            <div className={styles.venueButtons}>
-              <button
-                className={styles.editManagerVenueBtn}
-                type="button"
-                onClick={() => setSelectedVenue(venue)}
-              >
-                Edit
-              </button>
+              {/* created/updated */}
+              <p className={styles.created}>
+                Created: {new Date(venue.created).toLocaleDateString()}
+              </p>
 
-              <button
-                className={styles.deleteManagerVenueBtn}
-                type="button"
-                onClick={() => handleDelete(venue.id)}
-              >
-                Delete
-              </button>
+              <p className={styles.updated}>
+                Updated: {new Date(venue.updated).toLocaleDateString()}
+              </p>
             </div>
 
             {/* booking calendar for your created venue */}

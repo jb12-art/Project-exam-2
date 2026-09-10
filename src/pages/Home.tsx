@@ -80,33 +80,36 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* manager page */}
-      {localStorage.getItem('venueManager') === 'true' && (
-        <Link className={styles.managerDashboardLink} to="/manager">
-          Manager Dashboard
-        </Link>
-      )}
+      {/* customer/manager div */}
+      <div className={styles.customerManagerDiv}>
+        {/* manager page */}
+        {localStorage.getItem('venueManager') === 'true' && (
+          <Link className={styles.managerDashboardLink} to="/manager">
+            Manager Dashboard
+          </Link>
+        )}
 
-      {/* customer profile page */}
-      {isLoggedIn && localStorage.getItem('venueManager') !== 'true' && (
-        <Link className={styles.myProfileLink} to="/profile">
-          My Profile
-        </Link>
-      )}
+        {/* customer profile page */}
+        {isLoggedIn && localStorage.getItem('venueManager') !== 'true' && (
+          <Link className={styles.myProfileLink} to="/profile">
+            My Profile
+          </Link>
+        )}
 
-      {/* logged in user info */}
-      {isLoggedIn && profile && <UserInfo profile={profile} />}
+        {/* logged in user info */}
+        {isLoggedIn && profile && <UserInfo profile={profile} />}
 
-      {/* login/register */}
-      {!isLoggedIn && (
-        <>
-          <LoginBtn />
-          <RegisterBtn />
-        </>
-      )}
+        {/* login/register */}
+        {!isLoggedIn && (
+          <>
+            <LoginBtn />
+            <RegisterBtn />
+          </>
+        )}
 
-      {/* logout */}
-      {isLoggedIn && <LogoutBtn onLogout={() => setIsLoggedIn(false)} />}
+        {/* logout */}
+        {isLoggedIn && <LogoutBtn onLogout={() => setIsLoggedIn(false)} />}
+      </div>
 
       {/* header */}
       <h1 className={styles.header}>Find your destination</h1>
@@ -114,12 +117,15 @@ export default function Home() {
       {/* search bar */}
       <Searchbar onSearch={setSearch} />
 
-      <h2>Venues</h2>
+      {/* div */}
+      <div className={styles.backgroundDiv}>
+        <h2 className={styles.h2Venues}>Venues</h2>
 
-      <div className={styles.grid}>
-        {filteredVenues.map((venue) => (
-          <VenueCard key={venue.id} venue={venue} />
-        ))}
+        <div className={styles.grid}>
+          {filteredVenues.map((venue) => (
+            <VenueCard key={venue.id} venue={venue} />
+          ))}
+        </div>
       </div>
     </Layout>
   );

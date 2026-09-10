@@ -2,10 +2,11 @@
 
 /* Desktop */
 .footer {
+  margin-top: 8rem;
   padding: 20px;
   background-color: pink;
   display: flex;
-  color: darkgreen;
+  color: white;
 }
 
 /* Tablet */

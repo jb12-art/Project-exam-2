@@ -3,4 +3,14 @@
 .loginBtn {
   background-color: aliceblue;
   padding: 10px;
+  border-radius: 8px;
+  color: blue;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  background-color: blue;
+  color: aliceblue;
 }

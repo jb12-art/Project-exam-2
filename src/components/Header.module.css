@@ -2,9 +2,15 @@
 
 /* Desktop */
 .header {
-  background-color: blue;
-  color: aliceblue;
+  background-color: pink;
+  color: darkgreen;
   padding: 20px;
+}
+
+.h1 {
+  /* font-family:
+    'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
 
 /* Tablet */

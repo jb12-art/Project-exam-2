@@ -3,8 +3,9 @@
 /* Desktop */
 .footer {
   padding: 20px;
-  background-color: blueviolet;
+  background-color: pink;
   display: flex;
+  color: darkgreen;
 }
 
 /* Tablet */

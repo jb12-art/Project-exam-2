@@ -33,7 +33,7 @@ export default function ProfileAvatarForm({ profile, onAvatarUpdated }: Props) {
 
   return (
     <section className={styles.section}>
-      <h1>My profile</h1>
+      <h1 className={styles.h1}>My profile</h1>
 
       <p>You can change your profile picture</p>
 

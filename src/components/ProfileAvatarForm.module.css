@@ -1,5 +1,9 @@
 /* src/components/ProfileAvatarForm.module.css */
 
+.h1 {
+  margin-bottom: 50px;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -10,7 +14,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  max-width: 700px;
   width: 100%;
   margin-bottom: 20px;
   background-color: aliceblue;

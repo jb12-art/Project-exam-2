@@ -46,36 +46,41 @@ export default function CustomerBookings() {
 
   return (
     <section className={styles.section}>
-      <h2>My upcoming bookings</h2>
+      <h2 className={styles.h2UpcomingBookings}>My upcoming bookings</h2>
 
       {upcomingBookings.length === 0 ? (
         <p>You have no upcoming bookings.</p>
       ) : (
         upcomingBookings.map((booking) => (
-          <div className={styles.divUpcomingBookings} key={booking.id}>
-            <img
-              src={booking.venue?.media?.[0]?.url || '/placeholder.jpg'}
-              alt={
-                booking.venue?.media?.[0]?.alt || booking.venue?.name || 'Venue'
-              }
-              className={styles.venueImage}
-            />
+          // background div
+          <div className={styles.backgroundDiv}>
+            <div className={styles.divUpcomingBookings} key={booking.id}>
+              <img
+                src={booking.venue?.media?.[0]?.url || '/placeholder.jpg'}
+                alt={
+                  booking.venue?.media?.[0]?.alt ||
+                  booking.venue?.name ||
+                  'Venue'
+                }
+                className={styles.venueImage}
+              />
 
-            <h3>{booking.venue?.name}</h3>
+              <h3>{booking.venue?.name}</h3>
 
-            <p>
-              <strong>From:</strong>{' '}
-              {new Date(booking.dateFrom).toLocaleDateString()}
-            </p>
+              <p>
+                <strong>From:</strong>{' '}
+                {new Date(booking.dateFrom).toLocaleDateString()}
+              </p>
 
-            <p>
-              <strong>To:</strong>{' '}
-              {new Date(booking.dateTo).toLocaleDateString()}
-            </p>
+              <p>
+                <strong>To:</strong>{' '}
+                {new Date(booking.dateTo).toLocaleDateString()}
+              </p>
 
-            <p>
-              <strong>Guests:</strong> {booking.guests}
-            </p>
+              <p>
+                <strong>Guests:</strong> {booking.guests}
+              </p>
+            </div>
           </div>
         ))
       )}

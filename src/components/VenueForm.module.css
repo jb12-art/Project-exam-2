@@ -44,9 +44,7 @@
 
 .meta {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  gap: 8px;
+  justify-content: space-between;
   margin: 10px 0;
   padding: 10px;
 }
@@ -57,4 +55,12 @@
   max-width: 200px;
   cursor: pointer;
   font-size: 16px;
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

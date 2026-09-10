@@ -290,18 +290,18 @@ export default function BookingCalendar({
       {/* selected dates */}
       <div className={styles.selectedDates}>
         <p>
-          <strong>Check-in:</strong>
+          <strong>Check-in: </strong>
           {dateFrom || 'Not selected'}
         </p>
 
         <p>
-          <strong>Check-out:</strong>
+          <strong>Check-out: </strong>
           {dateTo || 'Not selected'}
         </p>
       </div>
 
       {/* guests */}
-      <label htmlFor="guests">
+      <label className={styles.guests} htmlFor="guests">
         <strong>Guests</strong>
       </label>
 
@@ -316,6 +316,7 @@ export default function BookingCalendar({
 
       {/* book venue button */}
       <button
+        className={styles.bookVenueBtn}
         type="button"
         onClick={handleBooking}
         disabled={!isLoggedIn || !dateFrom || !dateTo}

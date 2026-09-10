@@ -1,35 +1,58 @@
 /* src/pages/venueDetails.module.tsx */
 
+.h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto 5px auto;
+  padding: 20px;
+  background-color: aliceblue;
+  border-radius: 8px;
+}
+
+.imgWrapper {
+  width: 100%;
+}
+
 .img {
   border-radius: 8px 8px 0px 0px;
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .content {
-  padding: 1rem;
-  background-color: aliceblue;
-  border-radius: 0px 0px 8px 8px;
+  width: 100%;
+}
+
+.venueLocation {
+  font-size: 14px;
+}
+
+.cityCountry,
+.addressZip {
+  margin: 0;
 }
 
 .title {
-  font-weight: 600;
-}
-
-.price {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.pricePerNight {
-  color: rgb(73, 73, 73);
-  font-size: 16px;
-  font-weight: normal;
+  font-weight: 700;
 }
 
 .venueMeta {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.created,
+.updated {
+  font-size: 12px;
 }

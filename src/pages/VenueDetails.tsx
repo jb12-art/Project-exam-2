@@ -90,12 +90,12 @@ export default function VenueDetails() {
       {/* logged in user info */}
       {isLoggedIn && profile && <UserInfo profile={profile} />}
 
-      <h1>Venue details</h1>
+      <h1 className={styles.h1}>Venue details</h1>
 
       {/* page layout */}
       <div className={styles.page}>
         {/* image */}
-        <div>
+        <div className={styles.imgWrapper}>
           <img
             src={venue.media[0]?.url || '/placeholder.jpg'}
             alt={venue.media[0]?.alt || venue.name}
@@ -107,29 +107,30 @@ export default function VenueDetails() {
         <div className={styles.content}>
           {/* location */}
           <div className={styles.venueLocation}>
-            <p>
+            <p className={styles.cityCountry}>
               {venue.location.city}, {venue.location.country}
             </p>
-            <p>{venue.location.address}</p>
+            <p className={styles.addressZip}>
+              {venue.location.address}, {venue.location.zip}
+            </p>
           </div>
 
           {/* name/title */}
-          <p className={styles.title}>{venue.name}</p>
+          <h3 className={styles.title}>{venue.name}</h3>
 
           {/* description */}
           <p className={styles.description}>{venue.description}</p>
 
           {/* price */}
-          <div className={styles.price}>
-            <span>€{venue.price}</span>
-            <span className={styles.pricePerNight}>/night</span>
-          </div>
+          <p>
+            <strong>€{venue.price}</strong>/night
+          </p>
 
           {/* max Guests */}
-          <p>Max Guests: {venue.maxGuests}</p>
+          <p>Max Guests {venue.maxGuests}</p>
 
           {/* rating */}
-          <p>&#9733;{venue.rating}</p>
+          <p>{'★'.repeat(venue.rating)}</p>
 
           {/* meta */}
           <div className={styles.venueMeta}>
@@ -147,10 +148,14 @@ export default function VenueDetails() {
           />
 
           {/* created */}
-          <p>Created: {new Date(venue.created).toLocaleDateString()}</p>
+          <p className={styles.created}>
+            Created: {new Date(venue.created).toLocaleDateString()}
+          </p>
 
           {/* updated */}
-          <p>Updated: {new Date(venue.updated).toLocaleDateString()}</p>
+          <p className={styles.updated}>
+            Updated: {new Date(venue.updated).toLocaleDateString()}
+          </p>
         </div>
       </div>
     </Layout>

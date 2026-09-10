@@ -3,13 +3,27 @@
 .h1 {
   text-align: center;
   margin: 50px 0 50px 0;
+  color: white;
+  font-size: 3rem;
 }
 
-.page {
+.backgroundDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: pink;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.page {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
   max-width: 700px;
   margin: 0 auto 5px auto;
   padding: 20px;

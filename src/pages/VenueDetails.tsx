@@ -92,70 +92,73 @@ export default function VenueDetails() {
 
       <h1 className={styles.h1}>Venue details</h1>
 
-      {/* page layout */}
-      <div className={styles.page}>
-        {/* image */}
-        <div className={styles.imgWrapper}>
-          <img
-            src={venue.media[0]?.url || '/placeholder.jpg'}
-            alt={venue.media[0]?.alt || venue.name}
-            className={styles.img}
-          />
-        </div>
-
-        {/* content */}
-        <div className={styles.content}>
-          {/* location */}
-          <div className={styles.venueLocation}>
-            <p className={styles.cityCountry}>
-              {venue.location.city}, {venue.location.country}
-            </p>
-            <p className={styles.addressZip}>
-              {venue.location.address}, {venue.location.zip}
-            </p>
+      {/* background Div */}
+      <div className={styles.backgroundDiv}>
+        {/* page layout */}
+        <div className={styles.page}>
+          {/* image */}
+          <div className={styles.imgWrapper}>
+            <img
+              src={venue.media[0]?.url || '/placeholder.jpg'}
+              alt={venue.media[0]?.alt || venue.name}
+              className={styles.img}
+            />
           </div>
 
-          {/* name/title */}
-          <h3 className={styles.title}>{venue.name}</h3>
+          {/* content */}
+          <div className={styles.content}>
+            {/* location */}
+            <div className={styles.venueLocation}>
+              <p className={styles.cityCountry}>
+                {venue.location.city}, {venue.location.country}
+              </p>
+              <p className={styles.addressZip}>
+                {venue.location.address}, {venue.location.zip}
+              </p>
+            </div>
 
-          {/* description */}
-          <p className={styles.description}>{venue.description}</p>
+            {/* name/title */}
+            <h3 className={styles.title}>{venue.name}</h3>
 
-          {/* price */}
-          <p>
-            <strong>€{venue.price}</strong>/night
-          </p>
+            {/* description */}
+            <p className={styles.description}>{venue.description}</p>
 
-          {/* max Guests */}
-          <p>Max Guests {venue.maxGuests}</p>
+            {/* price */}
+            <p>
+              <strong>€{venue.price}</strong>/night
+            </p>
 
-          {/* rating */}
-          <p>{'★'.repeat(venue.rating)}</p>
+            {/* max Guests */}
+            <p>Max Guests {venue.maxGuests}</p>
 
-          {/* meta */}
-          <div className={styles.venueMeta}>
-            {venue.meta.wifi && <span>Wifi</span>}
-            {venue.meta.parking && <span>Parking</span>}
-            {venue.meta.breakfast && <span>Breakfast</span>}
-            {venue.meta.pets && <span>Pets</span>}
+            {/* rating */}
+            <p>{'★'.repeat(venue.rating)}</p>
+
+            {/* meta */}
+            <div className={styles.venueMeta}>
+              {venue.meta.wifi && <span>Wifi</span>}
+              {venue.meta.parking && <span>Parking</span>}
+              {venue.meta.breakfast && <span>Breakfast</span>}
+              {venue.meta.pets && <span>Pets</span>}
+            </div>
+
+            {/* booking calendar */}
+            <BookingCalendar
+              venueId={venue.id}
+              bookings={bookings}
+              onBookingCreated={refreshBookings}
+            />
+
+            {/* created */}
+            <p className={styles.created}>
+              Created: {new Date(venue.created).toLocaleDateString()}
+            </p>
+
+            {/* updated */}
+            <p className={styles.updated}>
+              Updated: {new Date(venue.updated).toLocaleDateString()}
+            </p>
           </div>
-
-          {/* booking calendar */}
-          <BookingCalendar
-            venueId={venue.id}
-            bookings={bookings}
-            onBookingCreated={refreshBookings}
-          />
-
-          {/* created */}
-          <p className={styles.created}>
-            Created: {new Date(venue.created).toLocaleDateString()}
-          </p>
-
-          {/* updated */}
-          <p className={styles.updated}>
-            Updated: {new Date(venue.updated).toLocaleDateString()}
-          </p>
         </div>
       </div>
     </Layout>

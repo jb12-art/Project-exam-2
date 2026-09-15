@@ -7,7 +7,6 @@ import CustomerBookings from '../components/CustomerBookings';
 import { fetchProfile } from '../api/profiles';
 import type { Profile as ProfileType } from '../api/profiles';
 import BackToHome from '../components/BackToHome';
-import UserInfo from '../components/UserInfo';
 
 export default function Profile() {
   const [profile, setProfile] = useState<ProfileType | null>(null);
@@ -72,9 +71,6 @@ export default function Profile() {
       <BackToHome />
 
       <section>
-        {/* logged in user info */}
-        <UserInfo profile={profile} />
-
         <ProfileAvatarForm
           profile={profile}
           onAvatarUpdated={handleAvatarUpdated}

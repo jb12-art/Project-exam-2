@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchMyBookings } from '../api/profiles';
 import type { Booking } from '../types/bookings';
 import styles from './CustomerBookings.module.css';
+import RatingStars from './RatingStars';
 
 export default function CustomerBookings() {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -52,9 +53,9 @@ export default function CustomerBookings() {
         <p>You have no upcoming bookings.</p>
       ) : (
         upcomingBookings.map((booking) => (
-          // background div
-          <div className={styles.backgroundDiv}>
-            <div className={styles.divUpcomingBookings} key={booking.id}>
+          <div className={styles.divUpcomingBookings} key={booking.id}>
+            {/* background div */}
+            <div className={styles.backgroundDiv}>
               <img
                 src={booking.venue?.media?.[0]?.url || '/placeholder.jpg'}
                 alt={
@@ -80,6 +81,14 @@ export default function CustomerBookings() {
               <p>
                 <strong>Guests:</strong> {booking.guests}
               </p>
+
+              {/* customer rating */}
+              {booking.venue && (
+                <RatingStars
+                  venueId={booking.venue.id}
+                  currentRating={booking.venue.rating}
+                />
+              )}
             </div>
           </div>
         ))

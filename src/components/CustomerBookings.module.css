@@ -12,21 +12,21 @@
   justify-content: center;
 }
 
-.backgroundDiv {
+.divUpcomingBookings {
   background-color: pink;
   padding: 20px;
+  border-radius: 8px;
   max-width: 700px;
   width: 100%;
   margin-bottom: 20px;
-  border-radius: 8px;
 }
 
-.divUpcomingBookings {
+.backgroundDiv {
   background-color: aliceblue;
   padding: 20px;
-  border-radius: 8px;
   max-width: 700px;
   width: 100%;
+  border-radius: 8px;
 }
 
 .venueImage {

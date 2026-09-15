@@ -29,8 +29,6 @@ export default function VenueForm({ venue, onSaved }: Props) {
 
   const [imageAlt, setImageAlt] = useState(venue?.media[0]?.alt || '');
 
-  const [rating, setRating] = useState(venue?.rating || 0);
-
   const [wifi, setWifi] = useState(venue?.meta.wifi || false);
   const [parking, setParking] = useState(venue?.meta.parking || false);
   const [breakfast, setBreakfast] = useState(venue?.meta.breakfast || false);
@@ -57,7 +55,6 @@ export default function VenueForm({ venue, onSaved }: Props) {
             },
           ]
         : [],
-      rating,
 
       meta: {
         wifi,
@@ -95,7 +92,6 @@ export default function VenueForm({ venue, onSaved }: Props) {
         setMaxGuests(1);
         setImageUrl('');
         setImageAlt('');
-        setRating(0);
         setWifi(false);
         setParking(false);
         setBreakfast(false);
@@ -238,22 +234,6 @@ export default function VenueForm({ venue, onSaved }: Props) {
         value={imageAlt}
         onChange={(event) => setImageAlt(event.target.value)}
       />
-
-      {/* rating */}
-      <label htmlFor="venueRating">Rating</label>
-      <select
-        className={styles.ratingSelect}
-        id="venueRating"
-        value={rating}
-        onChange={(event) => setRating(Number(event.target.value))}
-      >
-        <option value="0">Choose rating</option>
-        <option value="1">★ 1</option>
-        <option value="2">★ 2</option>
-        <option value="3">★ 3</option>
-        <option value="4">★ 4</option>
-        <option value="5">★ 5</option>
-      </select>
 
       {/* venue facilities */}
       <fieldset className={styles.meta}>

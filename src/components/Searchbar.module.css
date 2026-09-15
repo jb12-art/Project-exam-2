@@ -18,3 +18,14 @@
   border-radius: 8px;
   padding: 10px 10px 10px 40px;
 }
+
+/* mobile */
+@media (max-width: 480px) {
+  .searchbar {
+    margin-bottom: 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 10px 10px 40px;
+    width: 100%;
+  }
+}

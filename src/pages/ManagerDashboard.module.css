@@ -2,6 +2,18 @@
 
 .header {
   text-align: center;
+  color: white;
+}
+
+.backgroundDiv {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: pink;
+  padding: 20px;
+  margin: 0 auto 20px;
 }
 
 .sectionProfile,
@@ -19,7 +31,6 @@
   margin-bottom: 5px;
   max-width: 700px;
   width: 100%;
-  margin-top: 30px;
   background-color: aliceblue;
   padding: 20px;
   border-radius: 8px;
@@ -48,17 +59,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 4px;
+  margin-top: 40px;
 }
 
 .h2ManagerVenues {
   margin-top: 40px;
+  color: white;
+}
+
+.venueNr {
+  color: white;
+  font-weight: bold;
 }
 
 .managerVenue {
   width: 100%;
   max-width: 700px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;

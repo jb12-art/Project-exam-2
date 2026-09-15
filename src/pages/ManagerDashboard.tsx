@@ -4,13 +4,11 @@ import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import VenueForm from '../components/VenueForm';
 import type { Venue } from '../types/venues';
-import { fetchMyVenues, fetchProfile, updateAvatar } from '../api/profiles';
+import { fetchMyVenues, updateAvatar } from '../api/profiles';
 import { deleteVenue } from '../api/venues';
 import ManagerBookingList from '../components/ManagerBookingList';
 import BackToHome from '../components/BackToHome';
 import styles from './ManagerDashboard.module.css';
-import UserInfo from '../components/UserInfo';
-import type { Profile as ProfileType } from '../api/profiles';
 
 export default function ManagerDashboard() {
   const userName = localStorage.getItem('userName');
@@ -22,8 +20,6 @@ export default function ManagerDashboard() {
   const [avatarAlt, setAvatarAlt] = useState('');
 
   const [message, setMessage] = useState('');
-
-  const [profile, setProfile] = useState<ProfileType | null>(null);
 
   useEffect(() => {
     document.title = 'Manager Dashboard';
@@ -41,23 +37,6 @@ export default function ManagerDashboard() {
       console.error(error);
     }
   }
-
-  // get profile
-  useEffect(() => {
-    async function getProfile() {
-      if (!userName) return;
-
-      try {
-        const data = await fetchProfile(userName);
-
-        setProfile(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    getProfile();
-  }, [userName]);
 
   // load venues when page opens
   useEffect(() => {
@@ -120,49 +99,53 @@ export default function ManagerDashboard() {
       {/* Back to home btn */}
       <BackToHome />
 
-      {/* logged in user info */}
-      {profile && <UserInfo profile={profile} />}
-
-      <h1 className={styles.header}>Venue Manager Dashboard</h1>
+      <h1 className={styles.header}>Manager Dashboard</h1>
 
       {/* profile section */}
-      <section className={styles.sectionProfile}>
-        <form className={styles.profileForm} onSubmit={handleAvatarSubmit}>
-          <h2>My profile</h2>
 
-          <label htmlFor="avatarUrl">Avatar URL</label>
+      {/* background div */}
+      <div className={styles.backgroundDiv}>
+        <section className={styles.sectionProfile}>
+          <form className={styles.profileForm} onSubmit={handleAvatarSubmit}>
+            <p>You can change your profile picture</p>
 
-          <input
-            className={styles.inputUrl}
-            id="avatarUrl"
-            type="url"
-            value={avatarUrl}
-            onChange={(event) => setAvatarUrl(event.target.value)}
-            required
-          />
+            <label htmlFor="avatarUrl">Image URL</label>
 
-          <label htmlFor="avatarAlt">Avatar alt text</label>
+            <input
+              className={styles.inputUrl}
+              id="avatarUrl"
+              type="url"
+              value={avatarUrl}
+              onChange={(event) => setAvatarUrl(event.target.value)}
+              required
+            />
 
-          <input
-            className={styles.inputAlt}
-            id="avatarAlt"
-            type="text"
-            value={avatarAlt}
-            onChange={(event) => setAvatarAlt(event.target.value)}
-            required
-          />
+            <label htmlFor="avatarAlt">Image Description</label>
 
-          <button className={styles.updateAvatarBtn} type="submit">
-            Update avatar
-          </button>
-          {message && <p>{message}</p>}
-        </form>
-      </section>
+            <input
+              className={styles.inputAlt}
+              id="avatarAlt"
+              type="text"
+              value={avatarAlt}
+              onChange={(event) => setAvatarAlt(event.target.value)}
+              required
+            />
+
+            <button className={styles.updateAvatarBtn} type="submit">
+              Update profile picture
+            </button>
+            {message && <p>{message}</p>}
+          </form>
+        </section>
+      </div>
 
       {/* create venue */}
       {/* Rest of the elements are in VenueForm.tsx */}
       <section className={styles.sectionVenue}>
-        <VenueForm onSaved={refreshVenues} />
+        {/* background div */}
+        <div className={styles.backgroundDiv}>
+          <VenueForm onSaved={refreshVenues} />
+        </div>
       </section>
 
       {/* manager venues */}
@@ -172,102 +155,105 @@ export default function ManagerDashboard() {
         {venues.length === 0 && <p>You have no venues yet.</p>}
 
         {/* show how many venues you have created */}
-        <p>Number of venues: {venues.length}</p>
+        <p className={styles.venueNr}>Number of venues: {venues.length}</p>
 
         {venues.map((venue) => (
-          // manager venues you have created
-          <div className={styles.managerVenue} key={venue.id}>
-            {/* image */}
-            <div>
-              <img
-                src={venue.media[0]?.url || '/placeholder.jpg'}
-                alt={venue.media[0]?.alt || venue.name}
-                className={styles.img}
-              />
-            </div>
+          // background div
+          <div className={styles.backgroundDiv} key={venue.id}>
+            {/* manager venues you have created */}
+            <div className={styles.managerVenue}>
+              {/* image */}
+              <div>
+                <img
+                  src={venue.media[0]?.url || '/placeholder.jpg'}
+                  alt={venue.media[0]?.alt || venue.name}
+                  className={styles.img}
+                />
+              </div>
 
-            {/* content */}
-            <div className={styles.content}>
-              {/* city/ country */}
-              <div className={styles.venueLocation}>
-                <p className={styles.cityCountry}>
-                  {venue.location.city}, {venue.location.country}
+              {/* content */}
+              <div className={styles.content}>
+                {/* city/ country */}
+                <div className={styles.venueLocation}>
+                  <p className={styles.cityCountry}>
+                    {venue.location.city}, {venue.location.country}
+                  </p>
+
+                  {/* address/ zip */}
+                  <p className={styles.addressZip}>
+                    {venue.location.address}, {venue.location.zip}
+                  </p>
+                </div>
+
+                {/* name */}
+                <h3>{venue.name}</h3>
+
+                {/* description */}
+                <p>{venue.description}</p>
+
+                {/* price */}
+                <p>
+                  <strong>€{venue.price}</strong>
+                  /night
                 </p>
 
-                {/* address/ zip */}
-                <p className={styles.addressZip}>
-                  {venue.location.address}, {venue.location.zip}
+                {/* maxguests */}
+                <p>Max guests {venue.maxGuests}</p>
+
+                {/* rating */}
+                <p>{'★'.repeat(venue.rating)}</p>
+
+                {/* meta */}
+                <div className={styles.meta}>
+                  {venue.meta.wifi && <span>Wifi</span>}
+                  {venue.meta.parking && <span>Parking</span>}
+                  {venue.meta.breakfast && <span>Breakfast</span>}
+                  {venue.meta.pets && <span>Pets</span>}
+                </div>
+
+                <div className={styles.venueButtons}>
+                  <button
+                    className={styles.editManagerVenueBtn}
+                    type="button"
+                    onClick={() => setSelectedVenue(venue)}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    className={styles.deleteManagerVenueBtn}
+                    type="button"
+                    onClick={() => handleDelete(venue.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+
+                {/* created/updated */}
+                <p className={styles.created}>
+                  Created: {new Date(venue.created).toLocaleDateString()}
+                </p>
+
+                <p className={styles.updated}>
+                  Updated: {new Date(venue.updated).toLocaleDateString()}
                 </p>
               </div>
 
-              {/* name */}
-              <h3>{venue.name}</h3>
+              {/* booking calendar for your created venue */}
+              {/* If no one has booked the venue, text will say: 'No upcoming bookings.' */}
+              <ManagerBookingList venueId={venue.id} />
 
-              {/* description */}
-              <p>{venue.description}</p>
-
-              {/* price */}
-              <p>
-                <strong>€{venue.price}</strong>
-                /night
-              </p>
-
-              {/* maxguests */}
-              <p>Max guests {venue.maxGuests}</p>
-
-              {/* rating */}
-              <p>{'★'.repeat(venue.rating)}</p>
-
-              {/* meta */}
-              <div className={styles.meta}>
-                {venue.meta.wifi && <span>Wifi</span>}
-                {venue.meta.parking && <span>Parking</span>}
-                {venue.meta.breakfast && <span>Breakfast</span>}
-                {venue.meta.pets && <span>Pets</span>}
-              </div>
-
-              <div className={styles.venueButtons}>
-                <button
-                  className={styles.editManagerVenueBtn}
-                  type="button"
-                  onClick={() => setSelectedVenue(venue)}
-                >
-                  Edit
-                </button>
-
-                <button
-                  className={styles.deleteManagerVenueBtn}
-                  type="button"
-                  onClick={() => handleDelete(venue.id)}
-                >
-                  Delete
-                </button>
-              </div>
-
-              {/* created/updated */}
-              <p className={styles.created}>
-                Created: {new Date(venue.created).toLocaleDateString()}
-              </p>
-
-              <p className={styles.updated}>
-                Updated: {new Date(venue.updated).toLocaleDateString()}
-              </p>
+              {/* edit venues */}
+              {selectedVenue?.id === venue.id && (
+                <VenueForm
+                  venue={venue}
+                  onSaved={async () => {
+                    setSelectedVenue(null);
+                    await refreshVenues();
+                  }}
+                />
+              )}
             </div>
-
-            {/* booking calendar for your created venue */}
-            {/* If no one has booked the venue, text will say: 'No upcoming bookings.' */}
-            <ManagerBookingList venueId={venue.id} />
-
-            {/* edit venues */}
-            {selectedVenue?.id === venue.id && (
-              <VenueForm
-                venue={venue}
-                onSaved={async () => {
-                  setSelectedVenue(null);
-                  await refreshVenues();
-                }}
-              />
-            )}
           </div>
         ))}
       </section>

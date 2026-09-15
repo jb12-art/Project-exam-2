@@ -6,6 +6,8 @@ import { getAuthHeaders } from './authHeaders';
 
 const API_URL = 'https://v2.api.noroff.dev';
 
+type VenueData = Omit<Venue, 'id' | 'created' | 'updated' | 'rating'>;
+
 export async function fetchVenues(): Promise<Venue[]> {
   const response = await fetch(
     `${API_URL}/holidaze/venues?_owner=true&sort=created&sortOrder=desc&limit=100`,
@@ -38,9 +40,7 @@ export async function fetchVenueBookings(venueId: string): Promise<Booking[]> {
   return json.data.bookings || [];
 }
 
-export async function createVenue(
-  venue: Omit<Venue, 'id' | 'created' | 'updated'>,
-): Promise<Venue> {
+export async function createVenue(venue: VenueData): Promise<Venue> {
   const response = await fetch(`${API_URL}/holidaze/venues`, {
     method: 'POST',
     headers: {

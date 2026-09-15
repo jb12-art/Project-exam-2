@@ -11,6 +11,7 @@ export interface Booking {
   venue?: {
     id: string;
     name: string;
+    rating: number;
 
     media?: {
       url: string;

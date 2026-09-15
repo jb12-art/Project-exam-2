@@ -7,22 +7,12 @@ import { fetchVenues } from '../api/venues';
 import type { Venue } from '../types/venues';
 import VenueCard from '../components/VenueCard';
 import Searchbar from '../components/Searchbar';
-import LoginBtn from '../components/LoginBtn';
-import RegisterBtn from '../components/RegisterBtn';
-import LogoutBtn from '../components/LogoutBtn';
-import UserInfo from '../components/UserInfo';
-import { Link } from 'react-router-dom';
-import { fetchProfile, type Profile as ProfileType } from '../api/profiles';
 
 export default function Home() {
   const [venues, setVenues] = useState<Venue[]>([]); // React Hook combined with TypeScript
-  const [profile, setProfile] = useState<ProfileType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    !!localStorage.getItem('accessToken'),
-  );
 
   const filteredVenues = venues.filter((venue) =>
     venue.name.toLowerCase().includes(search.toLowerCase()),
@@ -42,26 +32,6 @@ export default function Home() {
       });
   }, []);
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      return;
-    }
-
-    const userName = localStorage.getItem('userName');
-
-    if (!userName) {
-      return;
-    }
-
-    fetchProfile(userName)
-      .then((data) => {
-        setProfile(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [isLoggedIn]);
-
   if (loading) {
     return (
       <Layout>
@@ -80,37 +50,6 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* customer/manager div */}
-      <div className={styles.customerManagerDiv}>
-        {/* manager page */}
-        {localStorage.getItem('venueManager') === 'true' && (
-          <Link className={styles.managerDashboardLink} to="/manager">
-            Manager Dashboard
-          </Link>
-        )}
-
-        {/* customer profile page */}
-        {isLoggedIn && localStorage.getItem('venueManager') !== 'true' && (
-          <Link className={styles.myProfileLink} to="/profile">
-            My Profile
-          </Link>
-        )}
-
-        {/* logged in user info */}
-        {isLoggedIn && profile && <UserInfo profile={profile} />}
-
-        {/* login/register */}
-        {!isLoggedIn && (
-          <>
-            <LoginBtn />
-            <RegisterBtn />
-          </>
-        )}
-
-        {/* logout */}
-        {isLoggedIn && <LogoutBtn onLogout={() => setIsLoggedIn(false)} />}
-      </div>
-
       {/* header */}
       <h1 className={styles.header}>Find your destination</h1>
 

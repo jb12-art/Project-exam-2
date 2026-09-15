@@ -1,7 +1,9 @@
 /* src/components/BookingCalendar.module.css */
 
 .calendar {
+  width: 100%;
   max-width: 500px;
+  box-sizing: border-box;
   margin: 20px auto;
 }
 
@@ -10,12 +12,14 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
+  gap: 10px;
 }
 
 .calendarHeader h3 {
   margin: 0;
   text-transform: capitalize;
   text-align: center;
+  font-size: 1.2rem;
 }
 
 .calendarHeader button {
@@ -23,19 +27,22 @@
   cursor: pointer;
   border: 1px solid black;
   border-radius: 6px;
-}
-
-.calendarGrid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-  justify-content: center;
+  flex-shrink: 0;
 }
 
 .weekday {
   text-align: center;
   font-weight: bold;
   padding: 0.5rem 0;
+  min-width: 0;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .emptyDay {
@@ -44,11 +51,15 @@
 
 .availableDay,
 .bookedDay,
-.selectedDay {
+.selectedDay,
+.pastDay {
+  width: 100%;
+  min-width: 0;
   min-height: 45px;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .availableDay {
@@ -61,10 +72,6 @@
 }
 
 .pastDay {
-  min-height: 45px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
   background-color: #eeeeee;
   color: #999;
   cursor: not-allowed;
@@ -84,6 +91,7 @@
 
 .selectedDates {
   margin: 20px 0 15px 0;
+  overflow-wrap: break-word;
 }
 
 .selectedDates p {
@@ -103,4 +111,38 @@
   padding: 8px 16px;
   margin-bottom: 15px;
   cursor: pointer;
+}
+
+/* mobile */
+
+@media (max-width: 480px) {
+  .calendarHeader h3 {
+    font-size: 1rem;
+  }
+
+  .calendarHeader button {
+    padding: 0.4rem 0.7rem;
+  }
+
+  .weekday {
+    font-size: 0.8rem;
+  }
+
+  .calendarGrid {
+    gap: 3px;
+  }
+
+  .calendar {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  .availableDay,
+  .bookedDay,
+  .selectedDay,
+  .pastDay {
+    min-height: 40px;
+    font-size: 0.9rem;
+  }
 }

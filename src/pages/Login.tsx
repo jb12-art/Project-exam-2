@@ -57,53 +57,56 @@ export default function Login() {
 
       <h1 className={styles.header}>Login</h1>
 
-      <div className={styles.container}>
-        <form className={styles.loginForm} onSubmit={handleSubmit}>
-          {/* email */}
-          <label htmlFor="emailLogin">Email</label>
+      {/* background Div */}
+      <div className={styles.backgroundDiv}>
+        <div className={styles.container}>
+          <form className={styles.loginForm} onSubmit={handleSubmit}>
+            {/* email */}
+            <label htmlFor="emailLogin">Email</label>
 
-          <input
-            className={styles.inputEmail}
-            type="email"
-            name="email"
-            id="emailLogin"
-            required
-            placeholder="example@stud.noroff.no"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            autoComplete="email"
-          />
+            <input
+              className={styles.inputEmail}
+              type="email"
+              name="email"
+              id="emailLogin"
+              required
+              placeholder="example@stud.noroff.no"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+            />
 
-          {/* password */}
-          <label htmlFor="passwordLogin">Password</label>
+            {/* password */}
+            <label htmlFor="passwordLogin">Password</label>
 
-          <input
-            className={styles.inputPassword}
-            type="password"
-            name="password"
-            id="passwordLogin"
-            required
-            placeholder="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete="current-password"
-          />
+            <input
+              className={styles.inputPassword}
+              type="password"
+              name="password"
+              id="passwordLogin"
+              required
+              placeholder="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              autoComplete="current-password"
+            />
 
-          {error && <p>{error}</p>}
+            {error && <p>{error}</p>}
 
-          {/* login button */}
-          <button className={styles.loginBtn} type="submit">
-            Login
-          </button>
+            {/* login button */}
+            <button className={styles.loginBtn} type="submit">
+              Login
+            </button>
 
-          {/* link */}
-          <p>
-            Don't have an account?{''}
-            <Link className={styles.linkToRegister} to="/register">
-              Register
-            </Link>
-          </p>
-        </form>
+            {/* link */}
+            <p>
+              Don't have an account?{''}
+              <Link className={styles.linkToRegister} to="/register">
+                Register
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
     </Layout>
   );

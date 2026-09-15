@@ -21,6 +21,8 @@
 
 .page {
   max-width: 700px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto 5px auto;
   padding: 20px;
   background-color: aliceblue;
@@ -32,10 +34,12 @@
 }
 
 .img {
-  border-radius: 8px 8px 0px 0px;
-  max-height: fit-content;
+  display: block;
   width: 100%;
+  height: auto;
+  max-height: 400px;
   object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .content {

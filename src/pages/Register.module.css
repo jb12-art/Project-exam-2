@@ -56,3 +56,17 @@
   color: blue;
   margin-left: 4px;
 }
+
+/* mobile */
+@media (max-width: 480px) {
+  .fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .registerBtn {
+    max-width: 500px;
+    width: 100%;
+  }
+}

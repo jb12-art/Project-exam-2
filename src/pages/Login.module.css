@@ -49,3 +49,12 @@
   color: blue;
   margin-left: 4px;
 }
+
+/* mobile */
+
+@media (max-width: 480px) {
+  .loginBtn {
+    max-width: 500px;
+    width: 100%;
+  }
+}

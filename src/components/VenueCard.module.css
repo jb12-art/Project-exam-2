@@ -7,6 +7,8 @@
   background-color: aliceblue;
   text-decoration: none;
   padding: 1rem;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .img {

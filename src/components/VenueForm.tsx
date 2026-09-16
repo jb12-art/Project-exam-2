@@ -193,7 +193,7 @@ export default function VenueForm({ venue, onSaved }: Props) {
       />
 
       {/* guests */}
-      <label htmlFor="venueGuests">maximum guests</label>
+      <label htmlFor="venueGuests">Maximum guests</label>
 
       <input
         className={styles.inputGuests}

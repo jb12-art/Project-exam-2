@@ -50,7 +50,9 @@ export default function CustomerBookings() {
       <h2 className={styles.h2UpcomingBookings}>My upcoming bookings</h2>
 
       {upcomingBookings.length === 0 ? (
-        <p>You have no upcoming bookings.</p>
+        <p className={styles.noUpcomingBookingText}>
+          You have no upcoming bookings.
+        </p>
       ) : (
         upcomingBookings.map((booking) => (
           <div className={styles.divUpcomingBookings} key={booking.id}>

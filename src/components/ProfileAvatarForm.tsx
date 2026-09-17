@@ -50,6 +50,7 @@ export default function ProfileAvatarForm({ profile, onAvatarUpdated }: Props) {
             onChange={(event) => setAvatarUrl(event.target.value)}
             placeholder="https://example.com/image.jpg"
             required
+            aria-label="image url"
           />
 
           <label>Image Description</label>
@@ -60,6 +61,7 @@ export default function ProfileAvatarForm({ profile, onAvatarUpdated }: Props) {
             onChange={(event) => setAvatarAlt(event.target.value)}
             placeholder="example: My profile picture"
             required
+            aria-label="image description"
           />
 
           <button className={styles.profileImgBtn} type="submit">

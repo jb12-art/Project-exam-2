@@ -117,7 +117,7 @@ export default function Register() {
             />
 
             {/* password */}
-            <label htmlFor="passwordRegister">Password</label>
+            <label htmlFor="password">Password</label>
 
             <input
               className={styles.inputPassword}

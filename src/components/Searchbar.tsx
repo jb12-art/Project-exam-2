@@ -15,6 +15,7 @@ export default function Searchbar({ onSearch }: Props) {
         className={styles.searchbar}
         placeholder="Search venues"
         onChange={(event) => onSearch(event.target.value)}
+        aria-label="search bar"
       />
     </div>
   );

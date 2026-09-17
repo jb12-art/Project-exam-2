@@ -35,7 +35,7 @@ export default function Home() {
   if (loading) {
     return (
       <Layout>
-        <p>Loading...</p>
+        <p className={styles.loadingText}>Loading...</p>
       </Layout>
     );
   }

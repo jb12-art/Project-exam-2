@@ -9,6 +9,10 @@
   font-size: 3rem;
 }
 
+.loadingText {
+  color: white;
+}
+
 .backgroundDiv {
   background-color: pink;
   padding: 20px;

@@ -1,7 +1,7 @@
 // src/App.tsx
 
 import { useEffect } from 'react';
-import { HashRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 import Home from './pages/Home';
 import VenueDetails from './pages/VenueDetails';
@@ -27,7 +27,7 @@ function RedirectHandler() {
 
 function App() {
   return (
-    <HashRouter basename="/Project-exam-2">
+    <BrowserRouter basename="/Project-exam-2">
       <RedirectHandler />
 
       <Routes>
@@ -38,7 +38,7 @@ function App() {
         <Route path="/manager" element={<ManagerDashboard />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

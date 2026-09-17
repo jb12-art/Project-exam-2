@@ -8,14 +8,14 @@
     <title>Holidaze</title>
 
     <script>
-      const base = '/Project-exam-2';
       const path = window.location.pathname;
+      const base = '/Project-exam-2';
 
       if (path.startsWith(base)) {
-        const route = path.slice(base.length) || '/';
+        const route = path.substring(base.length);
 
         window.location.replace(
-          `${base}/?redirect=${encodeURIComponent(route)}`,
+          base + '/?redirect=' + encodeURIComponent(route),
         );
       }
     </script>

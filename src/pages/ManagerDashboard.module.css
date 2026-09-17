@@ -67,7 +67,8 @@
   color: white;
 }
 
-.venueNr {
+.venueNr,
+.noVenuesYetText {
   color: white;
   font-weight: bold;
 }

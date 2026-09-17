@@ -152,7 +152,9 @@ export default function ManagerDashboard() {
       <section className={styles.sectionManagerVenues}>
         <h2 className={styles.h2ManagerVenues}>Manager venues</h2>
 
-        {venues.length === 0 && <p>You have no venues yet.</p>}
+        {venues.length === 0 && (
+          <p className={styles.noVenuesYetText}>You have no venues yet.</p>
+        )}
 
         {/* show how many venues you have created */}
         <p className={styles.venueNr}>Number of venues: {venues.length}</p>

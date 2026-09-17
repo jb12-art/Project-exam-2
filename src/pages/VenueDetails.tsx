@@ -53,8 +53,18 @@ export default function VenueDetails() {
     }
   }
 
-  if (loading) return <Layout>Loading...</Layout>;
-  if (!venue) return <Layout>Venues not found</Layout>;
+  if (loading)
+    return (
+      <Layout>
+        <p className={styles.loadingText}>Loading...</p>
+      </Layout>
+    );
+  if (!venue)
+    return (
+      <Layout>
+        <p className={styles.loadingText}>Venues not found</p>
+      </Layout>
+    );
 
   return (
     <Layout>

@@ -7,6 +7,7 @@ import CustomerBookings from '../components/CustomerBookings';
 import { fetchProfile } from '../api/profiles';
 import type { Profile as ProfileType } from '../api/profiles';
 import BackToHome from '../components/BackToHome';
+import styles from './Profile.module.css';
 
 export default function Profile() {
   const [profile, setProfile] = useState<ProfileType | null>(null);
@@ -48,7 +49,7 @@ export default function Profile() {
   if (loading) {
     return (
       <Layout>
-        <p>Loading profile...</p>
+        <p className={styles.loadingText}>Loading profile...</p>
       </Layout>
     );
   }

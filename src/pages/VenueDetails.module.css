@@ -7,6 +7,10 @@
   font-size: 3rem;
 }
 
+.loadingText {
+  color: white;
+}
+
 .backgroundDiv {
   display: flex;
   flex-direction: column;

@@ -1,3 +1,5 @@
+# .github/workflows/deploy.yml
+
 # This script makes 'npm run deploy' run automatic when i commit and push to github. Instead of writing it manual everytime.
 
 name: Deploy to GitHub Pages
